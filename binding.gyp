@@ -7,7 +7,7 @@
         "ldflags": ["-l:libfreenect.a", "-l:libfreenect_sync.a"]
       },
       "ldlibs": ['/usr/local/lib'],
-      "libraries": [],
+      "libraries": ["-l:libfreenect.a"],
       "sources": [
         "src/freenect.cc",
         "src/binding.cc"
