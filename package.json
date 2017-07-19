@@ -8,7 +8,7 @@
     "libfreenect"
   ],
   "repository": "git://github.com/devsnek/node-freenect",
-  "main": "freenect",
+  "main": "index.js",
   "scripts": {
     "build": "node-gyp configure build"
   },

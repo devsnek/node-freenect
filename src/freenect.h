@@ -17,6 +17,7 @@ private:
   static Freenect* GetThis(napi_env env, napi_callback_info info, napi_value* args);
 
   static napi_value SetLed(napi_env env, napi_callback_info info);
+  static napi_value GetLed(napi_env env, napi_callback_info info);
 
   int deviceIndex;
   double tiltAngle;

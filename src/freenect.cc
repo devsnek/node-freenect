@@ -38,12 +38,13 @@ void Freenect::Init(napi_env env, napi_value exports) {
   napi_value cons;
   napi_property_descriptor properties[] = {
     DECLARE_NAPI_METHOD("setLed", SetLed),
+    DECLARE_NAPI_METHOD("getLed", GetLed),
     // DECLARE_NAPI_METHOD("setTiltAngle", SetTiltAngle),
     // DECLARE_NAPI_METHOD("getVideo", GetVideo),
     // DECLARE_NAPI_METHOD("getDepth", GetDepth),
     // DECLARE_NAPI_METHOD("getTiltAngle", GetTiltAngle),
   };
-  napi_define_class(env, "Freenect", New, nullptr, 1, properties, &cons);
+  napi_define_class(env, "Freenect", New, nullptr, 2, properties, &cons);
   assert(status == napi_ok);
 
   status = napi_create_reference(env, cons, 1, &constructor);
@@ -115,11 +116,24 @@ napi_value Freenect::SetLed(napi_env env, napi_callback_info info) {
   }
 
   freenect_led_options fOption = (freenect_led_options)option;
-  bool success = freenect_sync_set_led(fOption, f->deviceIndex);
-  if (success) f->ledOption = fOption;
+  int ret = freenect_sync_set_led(fOption, f->deviceIndex);
+  if (ret >= 0) f->ledOption = fOption;
 
   napi_value num;
-  status = napi_create_number(env, option, &num);
+  status = napi_create_number(env, ret >= 0 ? option : ret, &num);
+  assert(status == napi_ok);
+
+  return num;
+}
+
+napi_value Freenect::GetLed(napi_env env, napi_callback_info info) {
+  napi_status status;
+
+  napi_value args[0];
+  Freenect* f = GetThis(env, info, args);
+
+  napi_value num;
+  status = napi_create_number(env, f->ledOption, &num);
   assert(status == napi_ok);
 
   return num;

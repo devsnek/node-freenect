@@ -1,4 +1,4 @@
-var Freenect = require('freenect');
+const Freenect = require('../../');
 
 var kinect = new Freenect.Kinect(),
 		ledOption = 0,

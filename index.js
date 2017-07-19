@@ -10,6 +10,6 @@ const LedOptions = {
 };
 
 module.exports = {
-  Freenect: binding.Freenect,
+  Kinect: binding.Freenect,
   LedOptions,
 };
