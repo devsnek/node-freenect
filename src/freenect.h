@@ -1,4 +1,5 @@
 #include <node_api.h>
+
 #include <libfreenect_sync.h>
 
 class Freenect {
