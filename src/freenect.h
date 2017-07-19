@@ -14,6 +14,8 @@ private:
   static napi_value New(napi_env env, napi_callback_info info);
   static napi_ref constructor;
 
+  static Freenect* GetThis(napi_env env, napi_callback_info info, size_t argc, napi_value* args);
+
   static napi_value SetLed(napi_env env, napi_callback_info info);
 
   int deviceIndex;
