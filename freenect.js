@@ -1,4 +1,3 @@
-// require the c++ bindings & export to javascript
 const binding = require('bindings')('freenect');
 
 const LedOptions = {

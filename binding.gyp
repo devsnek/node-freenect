@@ -3,7 +3,9 @@
     {
       "target_name": "freenect",
       "include_dirs": ["/usr/local/include/libfreenect"],
-      "ldflags": ["-l:libfreenect.a", "-l:libfreenect_sync.a"],
+      "link_settings": {
+        "ldflags": ["-l:libfreenect.a", "-l:libfreenect_sync.a"]
+      },
       "ldlibs": ['/usr/local/lib'],
       "libraries": [],
       "sources": [
