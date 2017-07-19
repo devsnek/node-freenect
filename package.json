@@ -13,7 +13,8 @@
     "build": "node-gyp configure build"
   },
   "dependencies": {
-    "bindings": "^1.2.1"
+    "bindings": "^1.2.1",
+    "node-addon-api": "^0.5.1"
   },
   "gypfile": true
 }

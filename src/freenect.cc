@@ -83,9 +83,10 @@ napi_value Freenect::New(napi_env env, napi_callback_info info) {
   }
 }
 
-Freenect* Freenect::GetThis(napi_env env, napi_callback_info info, size_t argc, napi_value* args) {
+Freenect* Freenect::GetThis(napi_env env, napi_callback_info info, napi_value* args) {
   napi_status status;
 
+  size_t argc = 1;
   napi_value jsthis;
   status = napi_get_cb_info(env, info, &argc, args, &jsthis, nullptr);
   assert(status == napi_ok);
@@ -100,16 +101,8 @@ Freenect* Freenect::GetThis(napi_env env, napi_callback_info info, size_t argc, 
 napi_value Freenect::SetLed(napi_env env, napi_callback_info info) {
   napi_status status;
 
-  size_t argc = 1;
   napi_value args[1];
-  /*napi_value jsthis;
-  status = napi_get_cb_info(env, info, &argc, args, &jsthis, nullptr);
-  assert(status == napi_ok);
-
-  Freenect* f;
-  status = napi_unwrap(env, jsthis, reinterpret_cast<void**>(&f));
-  assert(status == napi_ok);*/
-  Freenect* f = GetThis(env, info, argc, args);
+  Freenect* f = GetThis(env, info, args);
 
   napi_valuetype valuetype;
   status = napi_typeof(env, args[0], &valuetype);
