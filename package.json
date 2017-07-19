@@ -1,12 +1,19 @@
 {
-	"name" : "freenect",
-	"description" : "libfreenect bindings for Node.js",
-	"version" : "0.0.2",
-	"author" : "Kazuyuki Honda <hakobera@gmail.com>",
-	"keywords": ["kinect", "libfreenect"],
-	"repository": "git://github.com/hakobera/node-freenect",
-	"main" : "freenect",
-	"scripts" : {
-		"install" : "node-waf configure build"
-	}
+  "name": "freenect",
+  "description": "libfreenect bindings for Node.js",
+  "version": "0.0.2",
+  "author": "Kazuyuki Honda <hakobera@gmail.com>",
+  "keywords": [
+    "kinect",
+    "libfreenect"
+  ],
+  "repository": "git://github.com/hakobera/node-freenect",
+  "main": "freenect",
+  "scripts": {
+    "install": "node-gyp configure build"
+  },
+  "dependencies": {
+    "bindings": "^1.2.1"
+  },
+  "gypfile": true
 }
